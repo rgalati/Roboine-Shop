@@ -1,33 +1,17 @@
-<div id="wrapper">
-	<div id="header">
-		<h1>{{title}}</h1>
-	</div>
-
-	<div id="content">
-		<ul >
-			<li *ngFor="let item of items">
-				id: <span>{{item.id}}</span><br/>
-				nom:<span>{{item.nom}}</span><br/>
-				description:<span>{{item.description}}</span><br/>
-				categorie: <span>{{item.categorie}}</span><br/>
-				prix: <span>{{item.prix}}</span>.-<br/>
-				<span><img src={{item.image}}></span>
-			</li>
-
-		</ul>
-		<div id="categorie">
-			<p>Catégorie</p>
-		</div>
-		
-		<div id="items">
-			<ul id="lstItems">
-				<li>item1</li>
-				<li>item2</li>
-			</ul>
-		</div>
-	</div>
-
-	<div id="footer">
-		<p>footer</p>
-	</div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>app.component</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>{{title}}</h1>
+        </div>
+            <router-outlet></router-outlet>
+        <div id="footer">
+            <p>footer</p>
+        </div>
+    </div>
+</body>
+</html>

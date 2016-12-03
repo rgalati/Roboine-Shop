@@ -2,8 +2,8 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class Data implements InMemoryDbService {
     createDb() {
         let items = [
-            {id: 1, nom: 'Alienware-15', description:'Pc portable super stylé !', categorie: 'Pc portable', prix: 2199.90, image:'../images/alienware.jpg'},
-            {id: 2, nom: 'Asus-G752VS', description:'Intel Core i7-6700HQ', categorie: 'Pc portable', prix: 2363, image:'../images/asusg752.jpg'}
+            {id: 1, nom: 'Alienware-15', description:'Pc portable super stylé !', categorie: 'Pc portable', prix: 2199.90, image:'images/1.jpg'},
+            {id: 2, nom: 'Asus-G752VS', description:'Intel Core i7-6700HQ', categorie: 'Pc portable', prix: 2363, image:'images/asus.png'}
         ];
         return {items};
     }

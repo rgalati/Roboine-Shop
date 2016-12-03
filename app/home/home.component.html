@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>app.component</title>
+</head>
+<body>
+    <div id="content">
+        <ul >
+            <li *ngFor="let item of items">
+                id: <span>{{item.id}}</span><br/>
+                nom:<span>{{item.nom}}</span><br/>
+                description:<span>{{item.description}}</span><br/>
+                categorie: <span>{{item.categorie}}</span><br/>
+                prix: <span>{{item.prix}}</span>.-<br/>
+                <img src="{{item.image}}" style="height:60px" (click)="gotoItem()"/>
+            </li>
+
+        </ul>
+
+    </div>
+</body>
+</html>
