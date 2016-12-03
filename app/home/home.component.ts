@@ -13,6 +13,7 @@ import { Router }               from '@angular/router';
 export class HomeComponent implements OnInit{
 
     item_list: Item[];
+    selectedItem: Item;
 
     constructor(private router: Router, private itemService: ItemService){ }
 
@@ -24,10 +25,14 @@ export class HomeComponent implements OnInit{
         this.getItems();
     }
 
+    onSelect(item: Item):void {
+        this.selectedItem = item;
+    }
+
     gotoItem(): void {
         /*let link = ['/item'];
         this.router.navigate(link);*/
-        this.router.navigate(['/item']);
+        this.router.navigate(['/item', this.selectedItem.id]);
     }
 
 }

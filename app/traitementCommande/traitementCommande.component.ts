@@ -1,15 +1,15 @@
-import { Component, OnInit }     	from '@angular/core';
+import { Component, OnInit }     			from '@angular/core';
 import { ActivatedRoute, Params, Router }	from '@angular/router';
-import { ItemService }				from '../itemService/itemService';
+import { ItemService }						from '../itemService/itemService';
 
 @Component({
     moduleId: module.id,
-    selector: 'my-item',
-    templateUrl: 'item.component.html'
+    selector: 'my-traitementCommande',
+    templateUrl: 'traitementCommande.component.html'
 
 })
-export class ItemComponent implements OnInit {
-    title = 'Item_page';
+export class TraitementCommandeComponent implements OnInit {
+    title = 'Panier';
 
     constructor(
     	private itemService: ItemService,
@@ -29,5 +29,4 @@ export class ItemComponent implements OnInit {
     }
 
 }
-
 

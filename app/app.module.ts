@@ -9,6 +9,7 @@ import {ItemService }   from './itemService/itemService';
 import { ItemComponent }    from './item/item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent }    from './home/home.component';
+import { TraitementCommandeComponent }  from './traitementCommande/traitementCommande.component';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { HomeComponent }    from './home/home.component';
     declarations: [
         AppComponent,
         ItemComponent,
-        HomeComponent
+        HomeComponent,
+        TraitementCommandeComponent
     ],
     providers: [ ItemService ],
     bootstrap: [ AppComponent ]
