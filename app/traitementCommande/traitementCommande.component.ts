@@ -1,6 +1,7 @@
 import { Component, OnInit }     			from '@angular/core';
 import { ActivatedRoute, Params, Router }	from '@angular/router';
 import { ItemService }						from '../itemService/itemService';
+import { Location }                         from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -8,24 +9,25 @@ import { ItemService }						from '../itemService/itemService';
     templateUrl: 'traitementCommande.component.html'
 
 })
-export class TraitementCommandeComponent implements OnInit {
+export class TraitementCommandeComponent /*implements OnInit*/ {
     title = 'Panier';
 
     constructor(
     	private itemService: ItemService,
     	private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private location: Location
     	){}
 
-    ngOnInit(): void{
+    /*ngOnInit(): void{
     	this.route.params.forEach((params: Params) => {
     	let id = +params['id'];
     	this.itemService.getItem(id).then(item => this.item = item);
     	});
-    }
+    }*/
 
     goBack(): void{
-        this.router.navigate(['/home']);
+        this.location.back();
     }
 
 }

@@ -1,5 +1,5 @@
+import { Item } from '../item/item';
 export class TraitementCommande {
-    id: number
-    quantite: number
-    prixTotal: number
+    qte: number
+    item: Item;
 }

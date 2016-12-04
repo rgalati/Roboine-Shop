@@ -8,11 +8,11 @@
 		<h2>Article : {{item.nom}}</h2>
 		<h4>Catégorie: {{item.categorie}}</h4>
 		<h4>Description: {{item.description}}</h4>
-		<h4>Prix: {{item.prix}}</h4>
+		<h4>Prix: {{item.prix}}.-</h4>
 		<img src="{{item.image}}" style="height:200px; width:200px"/>	
 		<div>
-			<h4>Quantité<input type="number" name="quantite" placeholder="1" min="1" max="100" size="1"  />
-			<button> <!-- (click)="addToCart(item, quantite)" -->Ajouter</button></h4>
+			<h4>Quantité<input id="qte" [(ngModel)]="qte" type="number" name="quantite" placeholder="1" min="1" max="100" size="1"  />
+			<button (click)="addToCart(item)">Ajouter</button></h4>
 		</div>
 		<button (click)="goBack()">Back</button>
 	</div>
