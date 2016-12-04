@@ -1,7 +1,7 @@
 import { Component, OnInit }     from '@angular/core';
 import { Item }                  from '../item/item';
 import { ItemService}            from '../itemService/itemService';
-import { Router }               from '@angular/router';
+import { Router }                from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -12,7 +12,7 @@ import { Router }               from '@angular/router';
 })
 export class HomeComponent implements OnInit{
 
-    item_list: Item[];
+    items: Item[];
     selectedItem: Item;
 
     constructor(private router: Router, private itemService: ItemService){ }

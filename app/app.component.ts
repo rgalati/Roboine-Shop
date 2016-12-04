@@ -8,13 +8,17 @@ import {  Router }	from '@angular/router';
     styleUrls: ['app.component.css']
 
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
     title = 'Roboine-Shop';
 
     constructor(private router: Router){}
 
     goToCart():void{
     	this.router.navigate(['/cart']);
+    }
+
+    goToHome():void{
+        this.router.navigate(['/home']);
     }
 }
 
