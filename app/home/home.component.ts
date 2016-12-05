@@ -30,8 +30,6 @@ export class HomeComponent implements OnInit{
     }
 
     gotoItem(): void {
-        /*let link = ['/item'];
-        this.router.navigate(link);*/
         this.router.navigate(['/item', this.selectedItem.id]);
     }
 

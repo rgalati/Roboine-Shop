@@ -8,6 +8,16 @@
 		<h1>{{title}}</h1>
 	</div>
 	<div >
+		<ul>
+			<li *ngFor="let cart of cart_items">
+				nom:<span>{{cart.item.nom}}</span><br/>
+				prix: <span>{{cart.item.prix}}</span>.-<br/>
+				Qte: <span>{{cart.qte}}</span>.-<br/>
+			</li>
+
+		</ul>
+	</div>
+	<div >
 		<button (click)="goBack()">Back</button>
 		<button>Valider Commande</button>
 	</div>
