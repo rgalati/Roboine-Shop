@@ -4,6 +4,7 @@ import { RouterModule, Routes }         from '@angular/router';
 import { ItemComponent }                from './item/item.component';
 import { HomeComponent }                from './home/home.component';
 import { TraitementCommandeComponent }  from './traitementCommande/traitementCommande.component';
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
     {
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path:'cart',
         component: TraitementCommandeComponent
+    },
+    {
+        path:'login',
+        component: LoginComponent
     }
 
 ];

@@ -9,17 +9,20 @@
 	</div>
 	<div >
 		<ul>
-			<li *ngFor="let cart of cart_items">
-				nom:<span>{{cart.item.nom}}</span><br/>
-				prix: <span>{{cart.item.prix}}</span>.-<br/>
-				Qte: <span>{{cart.qte}}</span>.-<br/>
+			<li *ngFor="let cart of cartItems" >
+				<img src="{{cart.item.image}}" style="height:50px; width:50px"/>
+				nom:<span>{{cart.item.nom}}</span> ;
+				prix: <span>{{cart.item.prix}}</span>.- ;
+				Qte: <span>{{cart.qte}}</span> ;
+				PrixTotal: <span (click)="calculerPrixTotal(cart.qte, cart.item.prix)">{{total}}</span>
 			</li>
 
 		</ul>
+		<div>Sous-total: {{sousTotal}}</div>
 	</div>
 	<div >
 		<button (click)="goBack()">Back</button>
-		<button>Valider Commande</button>
+		<button (clik)="validerCart()">Valider Commande</button>
 	</div>
 </body>
 </html>

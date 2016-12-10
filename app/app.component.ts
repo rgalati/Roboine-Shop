@@ -1,4 +1,4 @@
-import { Component, OnInit }     from '@angular/core';
+import { Component }     from '@angular/core';
 import {  Router }	from '@angular/router';
 
 @Component({
@@ -10,7 +10,6 @@ import {  Router }	from '@angular/router';
 })
 export class AppComponent{
     title = 'Roboine-Shop';
-
     constructor(private router: Router){}
 
     goToCart():void{
@@ -20,6 +19,11 @@ export class AppComponent{
     goToHome():void{
         this.router.navigate(['/home']);
     }
+
+    gotToLogin():void{
+        this.router.navigate(['login']);
+    }
+
 }
 
 

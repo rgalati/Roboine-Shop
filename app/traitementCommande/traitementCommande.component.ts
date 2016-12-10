@@ -1,25 +1,50 @@
 import { Component, OnInit }     			from '@angular/core';
-import { ActivatedRoute, Params, Router }	from '@angular/router';
 import { ItemService }						from '../itemService/itemService';
 import { Location }                         from '@angular/common';
 import { TraitementCommande }               from './traitementCommande';
-import { Item }                             from '../item/item';
-import { ItemComponent }                    from '../item/item.component';
+
 
 @Component({
     moduleId: module.id,
     selector: 'my-traitementCommande',
     templateUrl: 'traitementCommande.component.html',
-    inputs: ['cart_items']
+    //inputs: ['cart_items']
 
 })
-export class TraitementCommandeComponent {
+export class TraitementCommandeComponent implements OnInit {
     title = 'Panier';
+    cartItems: TraitementCommande[];
+    total ='?';
+    sousTotal = '?';
+    constructor(private location: Location, private itemService: ItemService){
 
-    constructor(private location: Location){}
+    }
+
+    ngOnInit(){
+        this.getCartItems();
+    }
 
     goBack(): void{
         this.location.back();
+    }
+
+    getCartItems(): void{
+        this.itemService.getCartItems().subscribe((newCartItem) =>{
+            this.cartItems = newCartItem;
+        })
+    }
+
+    validerCart():void{
+        console.log("envoyer le panier dans la db");
+    }
+
+    calculerPrixTotal(qte : String, prix: String): void{
+        console.log(qte+ "-"+ prix+"-"+qte*prix);
+        this.total=qte*prix;
+    }
+
+    calculerSousTotal():void{
+
     }
 
 }

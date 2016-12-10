@@ -17,12 +17,8 @@ export class HomeComponent implements OnInit{
 
     constructor(private router: Router, private itemService: ItemService){ }
 
-    getItems(): void{
-        this.itemService.getItems().then(items => this.items = items);
-    }
-
     ngOnInit(): void{
-        this.getItems();
+        this.itemService.getItems().then(items => this.items =items);
     }
 
     onSelect(item: Item):void {

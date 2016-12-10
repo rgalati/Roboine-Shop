@@ -10,6 +10,8 @@ import { ItemComponent }    from './item/item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent }    from './home/home.component';
 import { TraitementCommandeComponent }  from './traitementCommande/traitementCommande.component';
+import { LoginComponent }               from './login/login.component'
+import {LoginService} from "./loginService/loginService";
 
 @NgModule({
     imports: [
@@ -23,9 +25,10 @@ import { TraitementCommandeComponent }  from './traitementCommande/traitementCom
         AppComponent,
         ItemComponent,
         HomeComponent,
-        TraitementCommandeComponent
+        TraitementCommandeComponent,
+        LoginComponent
     ],
-    providers: [ ItemService ],
+    providers: [ ItemService, LoginService ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
