@@ -28,14 +28,12 @@ export class LoginComponent implements OnInit {
 
 
     checkLogin(username:String, password:String){
-        for (var log of this.logins){
-            if(log.username === username && log.password===password){
-                this.dataInvalid=false;
-                this.router.navigate(['/home']);
-            }else{
-                console.log("dommage");
-                this.dataInvalid=true;
-            }
+        if(this.loginService.checkLogin(username, password)===true){
+            this.dataInvalid=false;
+            this.router.navigate(['/home']);
+        }else{
+            console.log("dommage");
+            this.dataInvalid=true;
         }
     }
 

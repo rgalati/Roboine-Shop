@@ -1,4 +1,4 @@
-import { Component }     from '@angular/core';
+import {Component, OnInit}     from '@angular/core';
 import {  Router }	from '@angular/router';
 
 @Component({
@@ -8,10 +8,14 @@ import {  Router }	from '@angular/router';
     styleUrls: ['app.component.css']
 
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
     title = 'Roboine-Shop';
+    currentUser:{};
     constructor(private router: Router){}
 
+    ngOnInit():void{
+        this.currentUser=localStorage.getItem('current_User');
+    }
     goToCart():void{
     	this.router.navigate(['/cart']);
     }
@@ -22,6 +26,16 @@ export class AppComponent{
 
     gotToLogin():void{
         this.router.navigate(['login']);
+    }
+
+    logOut():void{
+        localStorage.removeItem('current_User');
+        console.log("logout");
+        this.currentUser=localStorage.getItem('current_User');
+    }
+
+    goToAccount():void{
+        
     }
 
 }

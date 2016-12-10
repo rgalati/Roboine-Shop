@@ -8,9 +8,11 @@
         <div id="header">
             <h1 (click)="goToHome()">{{title}}</h1>
             <h4 (click)="goToCart()">Panier</h4>
-            <h4 (click)="gotToLogin()">Login</h4>
+            <div  *ngIf="(currentUser | json) === (null | json)"><h4 (click)="gotToLogin()">Login</h4></div>
+            <div *ngIf="(currentUser | json) != (null | json)"><h4  (click)="logOut()">Log out</h4></div>
+            <div *ngIf="(currentUser | json) != (null | json)"><h4  (click)="goToAccount()">Compte</h4></div>
         </div>
-            <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
     </div>
 </body>
 </html>

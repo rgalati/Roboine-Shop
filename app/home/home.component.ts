@@ -14,11 +14,14 @@ export class HomeComponent implements OnInit{
 
     items: Item[];
     selectedItem: Item;
+    currentUser:{};
 
     constructor(private router: Router, private itemService: ItemService){ }
 
     ngOnInit(): void{
         this.itemService.getItems().then(items => this.items =items);
+        this.currentUser=localStorage.getItem('current_User');
+        console.log(this.currentUser);
     }
 
     onSelect(item: Item):void {

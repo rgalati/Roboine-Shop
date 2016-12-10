@@ -35,6 +35,7 @@ export class ItemComponent implements OnInit {
     }
 
     addToCart(item: Item, qte: String):void{
+
         var qte_n = parseInt(qte);
         if ((!(isNaN(qte_n))) && qte_n >0 && qte_n <100) {
             this.trt_com= {qte: qte_n, item :item};
