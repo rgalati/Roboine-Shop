@@ -35,7 +35,7 @@ export class AppComponent implements OnInit{
     }
 
     goToAccount():void{
-        
+        this.router.navigate(['accompte']);
     }
 
 }

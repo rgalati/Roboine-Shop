@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit{
     ngOnInit(): void{
         this.itemService.getItems().then(items => this.items =items);
         this.currentUser=localStorage.getItem('current_User');
-        console.log(this.currentUser);
+        console.log("appcomponent, currentUser: "+this.currentUser);
     }
 
     onSelect(item: Item):void {

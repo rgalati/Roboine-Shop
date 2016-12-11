@@ -12,6 +12,7 @@ import { HomeComponent }    from './home/home.component';
 import { TraitementCommandeComponent }  from './traitementCommande/traitementCommande.component';
 import { LoginComponent }               from './login/login.component'
 import {LoginService} from "./loginService/loginService";
+import {AccompteComponent} from "./accompte/accompte.component";
 
 @NgModule({
     imports: [
@@ -26,7 +27,9 @@ import {LoginService} from "./loginService/loginService";
         ItemComponent,
         HomeComponent,
         TraitementCommandeComponent,
-        LoginComponent
+        LoginComponent,
+        AccompteComponent
+
     ],
     providers: [ ItemService, LoginService ],
     bootstrap: [ AppComponent ]

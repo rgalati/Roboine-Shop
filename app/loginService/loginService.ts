@@ -10,6 +10,7 @@ import {Observable} from "rxjs";
 @Injectable()
 export class LoginService {
     logins:Login[];
+    currentUser:{};
     constructor(private http: Http) {
     }
 
@@ -25,6 +26,7 @@ export class LoginService {
                 fetchedLogin.push((this.getLoginFromJson(login)))
             }
             this.logins=fetchedLogin;
+            console.log("fetched: " + fetchedLogin);
             return fetchedLogin as Array<Login>;
         });
     }
@@ -40,7 +42,11 @@ export class LoginService {
         }
     }
 
-    getCurrentUser(): void{
+    getCurrentUser(): Login{
+        this.currentUser=localStorage.getItem('current_User');
+        var login = JSON.parse(this.currentUser.toString());
+        console.log("getCurrent: "+ login);
+        return this.getLoginFromJson(login);
 
     }
 

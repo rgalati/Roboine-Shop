@@ -5,6 +5,7 @@ import { ItemComponent }                from './item/item.component';
 import { HomeComponent }                from './home/home.component';
 import { TraitementCommandeComponent }  from './traitementCommande/traitementCommande.component';
 import {LoginComponent} from "./login/login.component";
+import {AccompteComponent} from "./accompte/accompte.component";
 
 const routes: Routes = [
     {
@@ -27,6 +28,10 @@ const routes: Routes = [
     {
         path:'login',
         component: LoginComponent
+    },
+    {
+        path:'accompte',
+        component: AccompteComponent
     }
 
 ];
