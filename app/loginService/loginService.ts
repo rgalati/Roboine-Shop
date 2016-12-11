@@ -16,7 +16,7 @@ export class LoginService {
 
     private getLoginFromJson(obj: Login): Login{
         return new Login(
-            obj.id, obj.username, obj.password)
+            obj.id, obj.username, obj.password, obj.email, obj.fName, obj.lName, obj.street, obj.npa, obj.city, obj.country, obj.phone)
     }
 
     getLogins(): Observable<Login[]> {
@@ -45,7 +45,7 @@ export class LoginService {
     getCurrentUser(): Login{
         this.currentUser=localStorage.getItem('current_User');
         var login = JSON.parse(this.currentUser.toString());
-        console.log("getCurrent: "+ login);
+        console.log("getCurrent Parser: "+ login);
         return this.getLoginFromJson(login);
 
     }
