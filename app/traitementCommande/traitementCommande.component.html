@@ -7,22 +7,25 @@
 	<div>
 		<h1>{{title}}</h1>
 	</div>
+	<div *ngIf="emptyCart ===true">Aucun article présent dans le panier.</div>
 	<div >
-		<ul>
-			<li *ngFor="let cart of cartItems" >
-				<img src="{{cart.item.image}}" style="height:50px; width:50px"/>
-				nom:<span>{{cart.item.nom}}</span> ;
-				prix: <span>{{cart.item.prix}}</span>.- ;
-				Qte: <span>{{cart.qte}}</span> ;
-				PrixTotal: <span (click)="calculerPrixTotal(cart.qte, cart.item.prix)">{{total}}</span>
-			</li>
+		<div  *ngIf="emptyCart ===false">
+			<ul>
+				<li *ngFor="let cart of cartItems" >
+					<img src="{{cart.item.image}}" style="height:50px; width:50px"/>
+					<span>Nom:{{cart.item.nom}} ; </span>
+					<span>Prix Unitaire: {{cart.item.prix}} CHF ; </span>
+					<span>Qte: {{cart.qte}} ; </span>
+					<span>Prix: {{cart.qte * cart.item.prix}} CHF </span>
+				</li>
 
-		</ul>
-		<div>Sous-total: {{sousTotal}}</div>
-	</div>
-	<div >
-		<button (click)="goBack()">Back</button>
-		<button (clik)="validerCart()">Valider Commande</button>
+			</ul>
+			<div>Total: {{total}} CHF </div>
+		</div>
+		<div >
+			<button (click)="goBack()">Back</button>
+			<button *ngIf="emptyCart ===false" (click)="validerCart()">Valider Commande</button>
+		</div>
 	</div>
 </body>
 </html>

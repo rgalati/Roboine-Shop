@@ -1,5 +1,7 @@
+import {TraitementCommande} from "../traitementCommande/traitementCommande";
 export class Commande {
     id: number
-    statut: String
     date: Date
+    panier: TraitementCommande[]
+    user:number
 }

@@ -9,8 +9,9 @@
             <h1 (click)="goToHome()">{{title}}</h1>
             <h4 (click)="goToCart()">Panier</h4>
             <div  *ngIf="(currentUser | json) === (null | json)"><h4 (click)="gotToLogin()">Login</h4></div>
-            <div *ngIf="(currentUser | json) != (null | json)"><h4  (click)="logOut()">Log out</h4></div>
-            <div *ngIf="(currentUser | json) != (null | json)"><h4  (click)="goToAccount()">Compte</h4></div>
+            <h4 *ngIf="(currentUser | json) != (null | json)" (click)="logOut()">Log out</h4>
+            <h4 *ngIf="(currentUser | json) != (null | json)" (click)="goToAccount()">Compte</h4>
+            <h4 *ngIf="(currentUser | json) != (null | json)" (click)="goToCommande()" >Mes Commandes</h4>
         </div>
         <router-outlet></router-outlet>
     </div>

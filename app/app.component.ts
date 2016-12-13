@@ -1,5 +1,6 @@
 import {Component, OnInit}     from '@angular/core';
 import {  Router }	from '@angular/router';
+import forEach = require("core-js/fn/array/for-each");
 
 @Component({
     moduleId: module.id,
@@ -11,6 +12,7 @@ import {  Router }	from '@angular/router';
 export class AppComponent implements OnInit{
     title = 'Roboine-Shop';
     currentUser:{};
+    cart=[];
     constructor(private router: Router){}
 
     ngOnInit():void{
@@ -28,15 +30,23 @@ export class AppComponent implements OnInit{
         this.router.navigate(['login']);
     }
 
+    goToAccount():void{
+        this.router.navigate(['accompte']);
+    }
+
+    goToCommande():void{
+        this.router.navigate(['commande']);
+    }
+
     logOut():void{
         localStorage.removeItem('current_User');
         console.log("logout");
         this.currentUser=localStorage.getItem('current_User');
     }
 
-    goToAccount():void{
-        this.router.navigate(['accompte']);
-    }
+
+
+
 
 }
 

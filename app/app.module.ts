@@ -13,6 +13,8 @@ import { TraitementCommandeComponent }  from './traitementCommande/traitementCom
 import { LoginComponent }               from './login/login.component'
 import {LoginService} from "./loginService/loginService";
 import {AccompteComponent} from "./accompte/accompte.component";
+import {CommandeComponent} from "./commande/commande.component";
+import {RegisterComponent} from "./register/register.component";
 
 @NgModule({
     imports: [
@@ -28,7 +30,9 @@ import {AccompteComponent} from "./accompte/accompte.component";
         HomeComponent,
         TraitementCommandeComponent,
         LoginComponent,
-        AccompteComponent
+        AccompteComponent,
+        CommandeComponent,
+        RegisterComponent
 
     ],
     providers: [ ItemService, LoginService ],

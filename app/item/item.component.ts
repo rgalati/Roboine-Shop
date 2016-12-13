@@ -3,6 +3,8 @@ import { ActivatedRoute, Params, Router }	from '@angular/router';
 import { ItemService }				from '../itemService/itemService';
 import { Item }                             from './item';
 import { TraitementCommande }               from '../traitementCommande/traitementCommande';
+import {LoginService} from "../loginService/loginService";
+import {Panier} from "../traitementCommande/panier";
 
 
 @Component({
@@ -13,15 +15,12 @@ import { TraitementCommande }               from '../traitementCommande/traiteme
 export class ItemComponent implements OnInit {
     title = 'Item_page';
     item: Item;
-    cart_items: TraitementCommande[];
+    cart_items;
+    panier :Panier;
     trt_com: TraitementCommande;
-    constructor(
-    	private itemService: ItemService,
-    	private route: ActivatedRoute,
-        private router: Router
-    	){
-        this.cart_items = [];
-    }
+    userId: number;
+    constructor(private itemService: ItemService, private route: ActivatedRoute, private router: Router, private loginService:LoginService){ this.cart_items = [];
+        /*this.panier = new Panier(1,this.cart_items,1);*/}
 
     ngOnInit(): void{
     	this.route.params.forEach((params: Params) => {
@@ -35,12 +34,21 @@ export class ItemComponent implements OnInit {
     }
 
     addToCart(item: Item, qte: String):void{
-
         var qte_n = parseInt(qte);
         if ((!(isNaN(qte_n))) && qte_n >0 && qte_n <100) {
             this.trt_com= {qte: qte_n, item :item};
-            this.itemService.postNewItemsInCart(this.trt_com);
+            this.cart_items.push(this.trt_com);
+            this.setCartStorage();
         }
+    }
+
+    setCartStorage():void{
+        var cart = JSON.stringify(this.cart_items);
+        localStorage.setItem('cart', cart);
+    }
+
+    public getCart(){
+        return this.cart_items;
     }
 
 }

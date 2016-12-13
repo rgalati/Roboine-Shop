@@ -26,7 +26,6 @@ export class LoginService {
                 fetchedLogin.push((this.getLoginFromJson(login)))
             }
             this.logins=fetchedLogin;
-            console.log("fetched: " + fetchedLogin);
             return fetchedLogin as Array<Login>;
         });
     }
@@ -45,7 +44,6 @@ export class LoginService {
     getCurrentUser(): Login{
         this.currentUser=localStorage.getItem('current_User');
         var login = JSON.parse(this.currentUser.toString());
-        console.log("getCurrent Parser: "+ login);
         return this.getLoginFromJson(login);
 
     }
