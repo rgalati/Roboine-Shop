@@ -27,7 +27,7 @@ export class TraitementCommandeComponent implements OnInit {
         this.cartItems = this.itemService.getCartItem()
         this.setEmptyCart();
         this.calculerPrixTotal();
-        this.userId = this.loginService.getCurrentUser().id;
+        if(this.userId != null){this.userId = this.loginService.getCurrentUser().id;}
     }
 
     goBack(): void{
@@ -36,7 +36,6 @@ export class TraitementCommandeComponent implements OnInit {
 
 
     setEmptyCart():void{
-        console.log(this.cartItems);
         if (this.cartItems.length === 0){
             this.emptyCart = true;
         }else{
@@ -48,11 +47,10 @@ export class TraitementCommandeComponent implements OnInit {
         console.log("envoyer le panier dans la db");
         this.panier = new Panier(this.panierId, this.cartItems, this.userId);
         console.log(this.panier);
-        //this.itemService.sendToDb(this.panier);
+        //this.itemService.sendToDb(this.panier).subscribe();
         this.cartItems=[];
         localStorage.setItem('cart', JSON.stringify(this.cartItems));
         this.ngOnInit();
-
     }
 
    calculerPrixTotal(): void{

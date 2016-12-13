@@ -26,7 +26,6 @@ export class ItemComponent implements OnInit {
     	this.itemService.getItem(id).then(item => this.item = item);
     	});
         this.cart_items = this.itemService.getCartItem();
-        console.log("cart recu:" +this.cart_items);
     }
 
     goBack(): void{
@@ -47,7 +46,6 @@ export class ItemComponent implements OnInit {
     setCartStorage():void{
         var cart = JSON.stringify(this.cart_items);
         localStorage.setItem('cart', cart);
-        console.log("cart rendu" +this.cart_items);
     }
 }
 

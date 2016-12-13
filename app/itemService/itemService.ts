@@ -6,6 +6,7 @@ import {TraitementCommande} from "../traitementCommande/traitementCommande";
 import {Observable} from "rxjs";
 import 'rxjs/Rx';
 import {ItemComponent} from "../item/item.component";
+import {Panier} from "../traitementCommande/panier";
 
 @Injectable()
 export class ItemService{
@@ -27,7 +28,6 @@ export class ItemService{
     getCartItem(){
         this.cart= [];
         var cartItemStorage = localStorage.getItem('cart');
-        console.log("cartItem: "+cartItemStorage);
         if(cartItemStorage === null){return this.cart;}
         var cartItem=JSON.parse(cartItemStorage);
 
@@ -46,12 +46,9 @@ export class ItemService{
         return this.getItems().then(item_list => item_list.find(item => item.id ===id));
     }
 
-    /*postNewItemsInCart(params:TraitementCommande){
-        let body = JSON.stringify(params);
-        return this.http.post('app/cartItems', body).map(
-            (resp: Response) => {
-                return this.getCartItemFromJson(resp.json().data);
-            });
+    /*sendToDb(panier:Panier){
+        let body = JSON.stringify(panier);
+        return this.http.post('app/cartItems', body).map(() => {});
     }*/
 
 

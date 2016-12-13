@@ -43,6 +43,7 @@ export class LoginService {
 
     getCurrentUser(): Login{
         this.currentUser=localStorage.getItem('current_User');
+        if(this.currentUser === null){return null;}
         var login = JSON.parse(this.currentUser.toString());
         return this.getLoginFromJson(login);
 
