@@ -21,10 +21,11 @@ export class ItemService{
 
     getCartItemFromJson(obj: TraitementCommande): TraitementCommande{
         return new TraitementCommande(
-           obj.qte, obj.item)
+           obj.id, obj.qte, obj.item)
     }
 
     getCartItem(){
+        this.cart= [];
         var cartItemStorage = localStorage.getItem('cart');
         console.log("cartItem: "+cartItemStorage);
         if(cartItemStorage === null){return this.cart;}

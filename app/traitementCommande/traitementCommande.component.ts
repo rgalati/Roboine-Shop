@@ -2,6 +2,8 @@ import { Component, OnInit }     			from '@angular/core';
 import { ItemService }						from '../itemService/itemService';
 import { Location }                         from '@angular/common';
 import { TraitementCommande }               from './traitementCommande';
+import {Panier} from "./panier";
+import {LoginService} from "../loginService/loginService";
 
 
 @Component({
@@ -15,14 +17,17 @@ export class TraitementCommandeComponent implements OnInit {
     cartItems:TraitementCommande[]
     total = 0;
     emptyCart: boolean;
-    constructor(private location: Location, private itemService: ItemService){
+    panier: Panier;
+    panierId:number = 1;
+    userId: number;
+    constructor(private location: Location, private itemService: ItemService, private loginService:LoginService){
     }
 
     ngOnInit(){
         this.cartItems = this.itemService.getCartItem()
         this.setEmptyCart();
         this.calculerPrixTotal();
-
+        this.userId = this.loginService.getCurrentUser().id;
     }
 
     goBack(): void{
@@ -41,6 +46,13 @@ export class TraitementCommandeComponent implements OnInit {
 
     validerCart():void{
         console.log("envoyer le panier dans la db");
+        this.panier = new Panier(this.panierId, this.cartItems, this.userId);
+        console.log(this.panier);
+        //this.itemService.sendToDb(this.panier);
+        this.cartItems=[];
+        localStorage.setItem('cart', JSON.stringify(this.cartItems));
+        this.ngOnInit();
+
     }
 
    calculerPrixTotal(): void{
@@ -51,10 +63,14 @@ export class TraitementCommandeComponent implements OnInit {
            total = total+somme;
        }
         this.total = total;
-
     }
 
-
+    deleteCartItem(cart : TraitementCommande): void{
+        var index= this.cartItems.indexOf(cart);
+        this.cartItems.splice(index,1);
+        localStorage.setItem('cart', JSON.stringify(this.cartItems));
+        this.ngOnInit();
+    }
 
 }
 

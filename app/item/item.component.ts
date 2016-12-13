@@ -16,17 +16,17 @@ export class ItemComponent implements OnInit {
     title = 'Item_page';
     item: Item;
     cart_items;
-    panier :Panier;
     trt_com: TraitementCommande;
-    userId: number;
-    constructor(private itemService: ItemService, private route: ActivatedRoute, private router: Router, private loginService:LoginService){ this.cart_items = [];
-        /*this.panier = new Panier(1,this.cart_items,1);*/}
+    id_trt_com = 1;
+    constructor(private itemService: ItemService, private route: ActivatedRoute, private router: Router, private loginService:LoginService){ this.cart_items = [];}
 
     ngOnInit(): void{
     	this.route.params.forEach((params: Params) => {
     	let id = +params['id'];
     	this.itemService.getItem(id).then(item => this.item = item);
     	});
+        this.cart_items = this.itemService.getCartItem();
+        console.log("cart recu:" +this.cart_items);
     }
 
     goBack(): void{
@@ -36,21 +36,19 @@ export class ItemComponent implements OnInit {
     addToCart(item: Item, qte: String):void{
         var qte_n = parseInt(qte);
         if ((!(isNaN(qte_n))) && qte_n >0 && qte_n <100) {
-            this.trt_com= {qte: qte_n, item :item};
+            this.trt_com= {id: this.id_trt_com, qte: qte_n, item :item};
             this.cart_items.push(this.trt_com);
+            this.id_trt_com = this.id_trt_com+1;
             this.setCartStorage();
         }
     }
 
+
     setCartStorage():void{
         var cart = JSON.stringify(this.cart_items);
         localStorage.setItem('cart', cart);
+        console.log("cart rendu" +this.cart_items);
     }
-
-    public getCart(){
-        return this.cart_items;
-    }
-
 }
 
 

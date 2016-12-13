@@ -17,6 +17,7 @@
 					<span>Prix Unitaire: {{cart.item.prix}} CHF ; </span>
 					<span>Qte: {{cart.qte}} ; </span>
 					<span>Prix: {{cart.qte * cart.item.prix}} CHF </span>
+					<button style="color: red" (click)="deleteCartItem(cart)">X</button>
 				</li>
 
 			</ul>
