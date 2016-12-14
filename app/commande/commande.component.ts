@@ -1,6 +1,7 @@
 import { Component, OnInit }     from '@angular/core';
 import { ItemService}            from '../itemService/itemService';
 import {LoginService} from "../loginService/loginService";
+import {Commande} from "./commande";
 
 @Component({
     moduleId: module.id,
@@ -10,16 +11,18 @@ import {LoginService} from "../loginService/loginService";
 })
 export class CommandeComponent implements OnInit{
 
-    currentUser:{};
     title= 'Mes commandes';
-    constructor(private itemService: ItemService, private loginService: LoginService){ }
+    commande:Commande[]=[];
+    constructor(private itemService: ItemService, private loginService: LoginService){ this.commande= [];}
 
     ngOnInit(): void{
-        this.currentUser = this.loginService.getCurrentUser();
-        console.log(this.currentUser['id']);
-        console.log(this.currentUser['username']);
+        this.getOrders();
+        console.log("order: "+JSON.stringify(this.commande));
     }
 
+    getOrders(){
+       this.itemService.getCommandes().subscribe((newCom) => { this.commande = newCom});
+    }
 }
 
 

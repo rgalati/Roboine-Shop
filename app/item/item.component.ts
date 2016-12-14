@@ -16,7 +16,6 @@ export class ItemComponent implements OnInit {
     title = 'Item_page';
     item: Item;
     cart_items;
-    trt_com: TraitementCommande;
     id_trt_com = 1;
     constructor(private itemService: ItemService, private route: ActivatedRoute, private router: Router, private loginService:LoginService){ this.cart_items = [];}
 
@@ -35,8 +34,8 @@ export class ItemComponent implements OnInit {
     addToCart(item: Item, qte: String):void{
         var qte_n = parseInt(qte);
         if ((!(isNaN(qte_n))) && qte_n >0 && qte_n <100) {
-            this.trt_com= {id: this.id_trt_com, qte: qte_n, item :item};
-            this.cart_items.push(this.trt_com);
+            var trt_com= new TraitementCommande(this.id_trt_com, qte_n, item);
+            this.cart_items.push(trt_com);
             this.id_trt_com = this.id_trt_com+1;
             this.setCartStorage();
         }

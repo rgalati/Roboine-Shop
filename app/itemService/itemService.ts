@@ -3,17 +3,20 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Item }         from  '../item/item';
 import {TraitementCommande} from "../traitementCommande/traitementCommande";
-import {Observable} from "rxjs";
 import 'rxjs/Rx';
-import {ItemComponent} from "../item/item.component";
 import {Panier} from "../traitementCommande/panier";
+import {Commande} from "../commande/commande";
+import {LoginService} from "../loginService/loginService";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class ItemService{
     private itemsUrl = 'app/items';
     items = [];
     cart = [];
-    constructor(private http: Http){}
+    commande:Commande;
+    comId: number =0;
+    constructor(private http: Http, private loginService:LoginService){}
 
     private getItemFromJson(obj: Item): Item{
         return new Item(
@@ -25,10 +28,14 @@ export class ItemService{
            obj.id, obj.qte, obj.item)
     }
 
+    getCommandeFromJson(obj: Commande): Commande{
+        return new Commande(obj.id, obj.date, obj.panier, obj.user);
+    }
+
     getCartItem(){
         this.cart= [];
         var cartItemStorage = localStorage.getItem('cart');
-        if(cartItemStorage === null){return this.cart;}
+        if(cartItemStorage === null){return this.cart=[];}
         var cartItem=JSON.parse(cartItemStorage);
 
         for (var i=0; i<cartItem.length; i++){
@@ -46,10 +53,27 @@ export class ItemService{
         return this.getItems().then(item_list => item_list.find(item => item.id ===id));
     }
 
-    /*sendToDb(panier:Panier){
-        let body = JSON.stringify(panier);
-        return this.http.post('app/cartItems', body).map(() => {});
-    }*/
+    sendToDb(panier:Panier){
+        var userId = this.loginService.getCurrentUser().id;
+        var date = new Date();
+        this.comId++;
+        this.commande = new Commande(this.comId,date, panier, userId);
+        let body = JSON.stringify(this.commande);
+        return this.http.post('app/order', body).map(
+            (resp: Response) => {
+                return this.getCommandeFromJson(resp.json().data);
+            });
+    }
+
+    getCommandes():Observable<Commande[]>{
+        return this.http.get('app/order').map((resp:Response) => {
+            var fetchedCom=[];
+            for (let com of resp.json().data){
+                fetchedCom.push(this.getCommandeFromJson(com));
+            }
+            return fetchedCom as Array<Commande>;
+        })
+    }
 
 
     private handleError(error: any): Promise<any> {

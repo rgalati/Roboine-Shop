@@ -4,6 +4,8 @@ import { Location }                         from '@angular/common';
 import { TraitementCommande }               from './traitementCommande';
 import {Panier} from "./panier";
 import {LoginService} from "../loginService/loginService";
+import {Commande} from "../commande/commande";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -20,14 +22,14 @@ export class TraitementCommandeComponent implements OnInit {
     panier: Panier;
     panierId:number = 1;
     userId: number;
-    constructor(private location: Location, private itemService: ItemService, private loginService:LoginService){
+    commande:Commande;
+    constructor(private location: Location, private itemService: ItemService, private loginService:LoginService, private router:Router){
     }
 
     ngOnInit(){
         this.cartItems = this.itemService.getCartItem()
         this.setEmptyCart();
         this.calculerPrixTotal();
-        if(this.userId != null){this.userId = this.loginService.getCurrentUser().id;}
     }
 
     goBack(): void{
@@ -44,13 +46,15 @@ export class TraitementCommandeComponent implements OnInit {
     }
 
     validerCart():void{
-        console.log("envoyer le panier dans la db");
-        this.panier = new Panier(this.panierId, this.cartItems, this.userId);
-        console.log(this.panier);
-        //this.itemService.sendToDb(this.panier).subscribe();
-        this.cartItems=[];
-        localStorage.setItem('cart', JSON.stringify(this.cartItems));
-        this.ngOnInit();
+        if(this.userId === null || this.userId === {}){this.router.navigate(['login']);}
+        else {
+            this.userId = this.loginService.getCurrentUser().id;
+            this.panier = new Panier(this.panierId, this.cartItems,this.total, this.userId);
+            this.itemService.sendToDb(this.panier).subscribe((newCom) => {this.commande = newCom});
+            this.cartItems=[];
+            localStorage.setItem('cart', JSON.stringify(this.cartItems));
+            this.ngOnInit();
+            }
     }
 
    calculerPrixTotal(): void{

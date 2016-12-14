@@ -46,7 +46,7 @@ export class Data implements InMemoryDbService {
         ];
 
 
-        let cartItems = [];
+        let order = [];
 
         let users = [
             {
@@ -64,8 +64,6 @@ export class Data implements InMemoryDbService {
             }
         ];
 
-        let commande = [];
-
-        return {items, cartItems, users, commande};
+        return {items, order, users};
     }
 }
