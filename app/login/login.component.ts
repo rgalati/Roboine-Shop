@@ -2,6 +2,7 @@ import {Component, OnInit }        from '@angular/core';
 import {LoginService} from "../loginService/loginService";
 import {Router, ActivatedRoute, Params}    from '@angular/router';
 import {Login} from "./login";
+import {Http, Response} from "@angular/http";
 
 
 @Component({
@@ -13,11 +14,12 @@ export class LoginComponent implements OnInit {
     dataInvalid = false;
     logins:Login[];
 
-    constructor(private loginService: LoginService, private router:Router){}
+    constructor(private loginService: LoginService, private router:Router, private http:Http){}
 
     ngOnInit(): void{
         this.getLogins();
     }
+
 
     getLogins():void{
         this.loginService.getLogins().subscribe((arrayOfLogins) => {
@@ -25,7 +27,6 @@ export class LoginComponent implements OnInit {
         })
 
     }
-
 
     checkLogin(username:String, password:String){
         if(this.loginService.checkLogin(username, password)===true){
@@ -40,6 +41,8 @@ export class LoginComponent implements OnInit {
     goToRegister():void{
         this.router.navigate(['register']);
     }
+
+
 
 
 }

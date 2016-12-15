@@ -17,7 +17,6 @@ export class CommandeComponent implements OnInit{
 
     ngOnInit(): void{
         this.getOrders();
-        console.log("order: "+JSON.stringify(this.commande));
     }
 
     getOrders(){

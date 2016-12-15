@@ -43,7 +43,7 @@ export class LoginService {
 
     getCurrentUser(): Login{
         this.currentUser=localStorage.getItem('current_User');
-        if(this.currentUser === null){return null;}
+        if(this.currentUser === null || this.currentUser === undefined){return null;}
         var login = JSON.parse(this.currentUser.toString());
         return this.getLoginFromJson(login);
 
@@ -51,6 +51,15 @@ export class LoginService {
 
     setCurrentUser(login:Login):void{
         localStorage.setItem('current_User',JSON.stringify(login));
+    }
+
+    postLoginToDb(login:Login){
+        let body = JSON.stringify(login);
+        console.log("postLogin: " + body);
+        return this.http.post('app/users', body).map(
+            (resp: Response) => {console.log("resp: "+JSON.stringify(resp.json()));
+                return this.getLoginFromJson(resp.json().data);
+            });
     }
 
     private handleError(error: any): Promise<any> {

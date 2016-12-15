@@ -1,3 +1,39 @@
 <div>
     {{title}}
 </div>
+<div>
+    <form>
+        <div>
+            <input type="text"  #prenom placeholder="Prénom">
+        </div>
+        <div>
+            <input type="text"  #nom placeholder="Nom">
+        </div>
+        <div>
+            <input type="text"  #username placeholder="Username">
+        </div>
+        <div>
+            <input type="text"  #password placeholder="Password">
+        </div>
+        <div>
+            <input type="text"  #adresse placeholder="Adresse">
+        </div>
+        <div>
+            <input type="text"  #npa placeholder="Npa">
+        </div>
+        <div>
+            <input type="text"  #ville placeholder="Ville">
+        </div>
+        <div>
+            <input type="text"  #pays placeholder="Pays">
+        </div>
+        <div>
+            <input type="text"  #telephone placeholder="Téléphone">
+        </div>
+        <div>
+            <input type="text"  #email placeholder="Email">
+        </div>
+        <button type="submit" (click)="register(prenom.value, nom.value, username.value, password.value, adresse.value, npa.value, ville.value, pays.value, telephone.value, email.value)">Créer compte</button>
+    </form>
+</div>
+

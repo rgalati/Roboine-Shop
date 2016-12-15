@@ -6,7 +6,6 @@ import {Panier} from "./panier";
 import {LoginService} from "../loginService/loginService";
 import {Commande} from "../commande/commande";
 import {Router} from "@angular/router";
-import {isNullOrUndefined} from "util";
 
 
 @Component({
@@ -57,8 +56,7 @@ export class TraitementCommandeComponent implements OnInit {
         else {
             this.panier = new Panier(this.panierId, this.cartItems,this.total, this.userId);
             this.itemService.sendToDb(this.panier).subscribe((newCom) => {this.commande = newCom});
-            this.cartItems=[];
-            localStorage.setItem('cart', JSON.stringify(this.cartItems));
+            localStorage.removeItem('cart');
             this.ngOnInit();
             }
     }

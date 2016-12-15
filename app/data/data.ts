@@ -48,21 +48,7 @@ export class Data implements InMemoryDbService {
 
         let order = [];
 
-        let users = [
-            {
-                id:1,
-                username: 'admin',
-                password: '1234',
-                email: 'rg@email.com',
-                fName: 'Rob',
-                lName: 'Galati',
-                street: 'Chemin des Azalées 9',
-                npa: '74100',
-                city: 'Vétraz-Monthoux',
-                country: 'France',
-                phone: '+41795392396'
-            }
-        ];
+        let users = [];
 
         return {items, order, users};
     }
