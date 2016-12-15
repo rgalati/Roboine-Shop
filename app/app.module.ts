@@ -15,6 +15,7 @@ import {LoginService} from "./loginService/loginService";
 import {AccompteComponent} from "./accompte/accompte.component";
 import {CommandeComponent} from "./commande/commande.component";
 import {RegisterComponent} from "./register/register.component";
+import {ItemSearchComponent} from "./item-search/item-search.component";
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import {RegisterComponent} from "./register/register.component";
         LoginComponent,
         AccompteComponent,
         CommandeComponent,
-        RegisterComponent
+        RegisterComponent,
+        ItemSearchComponent
 
     ],
     providers: [ ItemService, LoginService ],

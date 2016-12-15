@@ -13,6 +13,7 @@
             <h4 *ngIf="(currentUser | json) != (null | json)" (click)="goToAccount()">Compte</h4>
             <h4 *ngIf="(currentUser | json) != (null | json)" (click)="goToCommande()" >Mes Commandes</h4>
         </div>
+        <div><item-search></item-search></div>
         <router-outlet></router-outlet>
     </div>
 </body>
