@@ -6,6 +6,7 @@ import {Panier} from "./panier";
 import {LoginService} from "../loginService/loginService";
 import {Commande} from "../commande/commande";
 import {Router} from "@angular/router";
+import {isNullOrUndefined} from "util";
 
 
 @Component({
@@ -30,6 +31,11 @@ export class TraitementCommandeComponent implements OnInit {
         this.cartItems = this.itemService.getCartItem()
         this.setEmptyCart();
         this.calculerPrixTotal();
+        var login =  localStorage.getItem('current_User');
+        console.log("loginStorage: "+JSON.stringify(localStorage.getItem('current_User')));
+        if(login === undefined || login === null){console.log("testlog1 "+this.userId); this.userId = null;}else{
+            this.userId = this.loginService.getCurrentUser().id;
+            console.log("testlog2 "+this.userId);}
     }
 
     goBack(): void{
@@ -46,9 +52,9 @@ export class TraitementCommandeComponent implements OnInit {
     }
 
     validerCart():void{
-        if(this.userId === null || this.userId === {}){this.router.navigate(['login']);}
+        //this.router.navigate(['login']);
+        if(this.userId === null || this.userId === undefined){ console.log(this.userId); this.router.navigate(['login']);}
         else {
-            this.userId = this.loginService.getCurrentUser().id;
             this.panier = new Panier(this.panierId, this.cartItems,this.total, this.userId);
             this.itemService.sendToDb(this.panier).subscribe((newCom) => {this.commande = newCom});
             this.cartItems=[];
