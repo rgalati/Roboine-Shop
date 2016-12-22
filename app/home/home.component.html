@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>home.component</title>
-</head>
 <body>
-    <div id="content">
-        <ul >
+    <!--Card-->
+    <div>
+        <ul class="card card-cascade narrower" style="list-style-type:none">
             <li *ngFor="let item of items">
-                nom:<span>{{item.nom}}</span><br/>
-                description:<span>{{item.description}}</span><br/>
-                categorie: <span>{{item.categorie}}</span><br/>
-                prix: <span>{{item.prix}}</span>.-<br/>
-                <img src="{{item.image}}" style="height:150px" (click)="onSelect(item)" (click)="gotoItem()"/>
+                <img src="{{item.image}}" style="height:120px;" class="img-fluid"  (click)="onSelect(item)" (click)="gotoItem()">
+                <div class="card-block text-xs-center">
+                    <!--Category & Title-->
+                    <h5>{{item.categorie}}</h5>
+                    <h4 class="card-title"><strong>{{item.nom}}</strong></h4>
+
+                    <!--Description-->
+                    <p class="card-text">{{item.description}}</p>
+
+                    <!--Card footer-->
+                    <div class="card-footer">
+                        <span class="left">{{item.prix}} CHF</span>
+                    </div>
+
+                </div>
             </li>
-
         </ul>
-
     </div>
 </body>
 </html>

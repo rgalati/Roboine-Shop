@@ -3,8 +3,15 @@
     <base href="/">
     <title>Roboine-shop</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link href="app/css/bootstrap.min.css" rel="stylesheet">
+    <link href="app/css/bootstrap.css" rel="stylesheet">
+    <link href="app/css/mdb.css" rel="stylesheet">
+    <link href="app/css/style.css" rel="stylesheet">
     <!-- 1. Load libraries -->
      <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -13,6 +20,9 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <!-- 2. Configure SystemJS -->
     <script src="systemjs.config.js"></script>
+    <script type="text/javascript" src="app/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="app/js/tether.min.js"></script>
+    <script type="text/javascript" src="app/js/bootstrap.min.js"></script>
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>

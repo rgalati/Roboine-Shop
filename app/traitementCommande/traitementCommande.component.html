@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>traitementCommande.component</title>
-</head>
 <body>
 	<div>
-		<h1>{{title}}</h1>
+		<h1 class="mdb-color-text.text-darken-3"><strong>{{title}}</strong></h1>
 	</div>
-	<div *ngIf="emptyCart ===true">Aucun article présent dans le panier.</div>
-	<div >
-		<div  *ngIf="emptyCart ===false">
-			<ul>
-				<li *ngFor="let cart of cartItems" >
-					<img src="{{cart.item.image}}" style="height:50px; width:50px"/>
-					<span>Nom:{{cart.item.nom}} ; </span>
-					<span>Prix Unitaire: {{cart.item.prix}} CHF ; </span>
-					<span>Qte: {{cart.qte}} ; </span>
-					<span>Prix: {{cart.qte * cart.item.prix}} CHF </span>
-					<button style="color: red" (click)="deleteCartItem(cart)">X</button>
-				</li>
 
-			</ul>
-			<div>Total: {{total}} CHF </div>
-		</div>
+	<div *ngIf="emptyCart ===true"><strong>Aucun article présent dans le panier.</strong></div>
+	<!--Shopping Cart table-->
+	<div *ngIf="emptyCart ===false" class="table-responsive">
+		<table class="table product-table" *ngFor="let cart of cartItems">
+			<thead>
+			<tr>
+				<th></th>
+				<th>Produit</th>
+				<th>Prix unitaire</th>
+				<th>Qte</th>
+				<th>Somme</th>
+				<th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr>
+				<th scope="row">
+					<img src="{{cart.item.image}}" alt="" class="img-fluid" style="height:100px; width:100px">
+				</th>
+				<td>
+					<h5><strong>{{cart.item.nom}}</strong></h5>
+				</td>
+				<td>{{cart.item.prix}} CHF</td>
+				<td>
+					<span class="qty">{{cart.qte}}</span>
+				</td>
+				<td>{{cart.qte * cart.item.prix}} CHF</td>
+				<td>
+					<button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Remove item" (click)="deleteCartItem(cart)">X
+					</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<div><h5><strong>Total: {{total}} CHF </strong></h5></div>
 		<div >
-			<button (click)="goBack()">Back</button>
-			<button *ngIf="emptyCart ===false" (click)="validerCart()">Valider Commande</button>
+			<button  class="btn btn-sm btn-primary" (click)="goBack()">Retour</button>
+			<button class="btn btn-sm btn-primary" *ngIf="emptyCart ===false" (click)="validerCart()">Valider Commande</button>
 		</div>
 	</div>
 </body>

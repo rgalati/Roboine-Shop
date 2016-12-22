@@ -1,7 +1,6 @@
-<div id="search-component">
-    <h4>Rechercher</h4>
-    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-    <div>
+<div action="" class="navbar-form navbar-right" role="search">
+    <div class="form-group">
+        <input #searchBox type="text" class="form-control" placeholder="Recherche" (keyup)="search(searchBox.value)">
         <div *ngFor="let item of items | async" (click)="goToItem(item)" class="search-result" >
             {{item.nom}}
         </div>

@@ -10,7 +10,8 @@ import {Panier} from "../traitementCommande/panier";
 @Component({
     moduleId: module.id,
     selector: 'my-item',
-    templateUrl: 'item.component.html'
+    templateUrl: 'item.component.html',
+    styleUrls:['item.component.css']
 })
 export class ItemComponent implements OnInit {
     title = 'Item_page';

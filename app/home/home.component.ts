@@ -8,9 +8,7 @@ import {Login} from "../login/login";
 @Component({
     moduleId: module.id,
     selector: 'my-home',
-    templateUrl: 'home.component.html',
-    styleUrls: ['home.component.css']
-
+    templateUrl: 'home.component.html'
 })
 export class HomeComponent implements OnInit{
 
