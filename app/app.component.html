@@ -32,6 +32,7 @@
                         <a class="nav-link" (click)="goToCommande()">Mes Commandes</a>
                     </li>
                 </ul>
+                <div><img class="search-icone" src="app/images/search-icone.png" (click)="showSearchBar()"></div>
             </div>
             <!--/.Collapse content-->
 
@@ -41,7 +42,7 @@
     <!--/.Navbar-->
 
 
-    <item-search></item-search>
+    <div *ngIf="showSearch"><item-search [parentSearch]="this.showSearch" (showSearchBarChanged)="showSearch = $event"></item-search></div>
     <router-outlet></router-outlet>
 
 </body>

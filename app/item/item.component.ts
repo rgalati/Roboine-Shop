@@ -4,8 +4,6 @@ import { ItemService }				from '../itemService/itemService';
 import { Item }                             from './item';
 import { TraitementCommande }               from '../traitementCommande/traitementCommande';
 import {LoginService} from "../loginService/loginService";
-import {Panier} from "../traitementCommande/panier";
-
 
 @Component({
     moduleId: module.id,
@@ -18,6 +16,7 @@ export class ItemComponent implements OnInit {
     item: Item;
     cart_items;
     id_trt_com = 1;
+
     constructor(private itemService: ItemService, private route: ActivatedRoute, private router: Router, private loginService:LoginService){ this.cart_items = [];}
 
     ngOnInit(): void{

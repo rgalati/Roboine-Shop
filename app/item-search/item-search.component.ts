@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
@@ -9,10 +9,14 @@ import { Item } from '../item/item';
     selector: 'item-search',
     templateUrl: 'item-search.component.html',
     styleUrls:['item-search.component.css'],
-    providers: [ItemSearchService]
+    providers: [ItemSearchService],
+    inputs: ['parentSearch'],
+    outputs: ['showSearchBarChanged']
 })
 export class ItemSearchComponent implements OnInit {
     items: Observable<Item[]>;
+    parentSearch: boolean;
+    showSearchBarChanged = new EventEmitter<boolean>();
     private searchTerms = new Subject<string>();
     constructor(private itemSearchService: ItemSearchService, private router: Router) {}
 
@@ -40,5 +44,10 @@ export class ItemSearchComponent implements OnInit {
 
     goToItem(item:Item):void {
         this.router.navigate(['/item', item.id]);
+    }
+
+    hideSearch():void{
+        this.parentSearch = false;
+        this.showSearchBarChanged.emit(this.parentSearch);
     }
 }

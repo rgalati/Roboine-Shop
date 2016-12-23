@@ -1,23 +1,27 @@
-<div>
-    <div>
-        <h2>Sign in</h2>
-        <form>
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+</head>
 
-            <div>
-                <input type="text"  #username placeholder="Username or email">
-            </div>
+<body>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 
-            <div>
-                <input type="password" #password class="form-control" placeholder="Password">
-            </div>
 
-            <div *ngIf="dataInvalid">
-                <p>Data invalide !</p>
-            </div>
-
-            <button type="submit" (click)="checkLogin(username.value, password.value)">Login</button>
-        </form>
-        <button type="submit" (click)="goToRegister()">Créer compte</button>
+<form>
+    <h4> Login </h4>
+    <input class="name" #username type="text" placeholder="Username"/>
+    <input class="pw" #password type="password" placeholder="Password"/><br>
+    <div *ngIf="dataInvalid">
+        <div class="alert alert-danger">
+            <a class="close" data-dismiss="alert" (click)="dataInvalid=false" >×</a>Incorrect Username or Password!
+        </div>
     </div>
-</div>
+    <li><a (click)="goToRegister()">Register</a></li>
+    <input class="button" type="submit" (click)="checkLogin(username.value, password.value)" value="Log in"/>
+</form>
 
+
+
+</body>
+</html>

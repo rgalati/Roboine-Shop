@@ -10,12 +10,12 @@
 <div>
     <ul >
         <li *ngFor="let com of commande">
-            <span>ID Commande: {{com.id}}</span>
+            <span>Commande: {{com.id}}</span><span> du {{com.date | date:"dd/mm/yyyy"}}</span>
             <span>Total: {{com.panier.total}} CHF</span>
             <br>
             <ul>
                 <li *ngFor="let pan of com.panier.panier">
-                    <img src="{{pan.item.image}}" style="height:50px; width:50px"/>
+                    <img src="{{pan.item.image}}" style="height:50px; width:120px"/>
                     <span>Article: {{pan.item.nom}}</span>
                     <span>Prix: {{pan.item.prix}} CHF</span>
                 </li>

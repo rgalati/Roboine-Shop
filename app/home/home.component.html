@@ -3,9 +3,9 @@
 <body>
     <!--Card-->
     <div>
-        <ul class="card card-cascade narrower" style="list-style-type:none">
-            <li *ngFor="let item of items">
-                <img src="{{item.image}}" style="height:120px;" class="img-fluid"  (click)="onSelect(item)" (click)="gotoItem()">
+        <ul class="card card-cascade narrower" style="list-style-type:none" *ngFor="let item of items">
+            <li>
+                <img src="{{item.image}}" class="img-fluid"  (click)="onSelect(item)" (click)="gotoItem()">
                 <div class="card-block text-xs-center">
                     <!--Category & Title-->
                     <h5>{{item.categorie}}</h5>

@@ -7,12 +7,12 @@ import forEach = require("core-js/fn/array/for-each");
     selector: 'my-app',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css']
-
 })
 export class AppComponent implements OnInit{
     title = 'Roboine-Shop';
     currentUser:{};
     cart=[];
+    showSearch = false;
     constructor(private router: Router){}
 
     ngOnInit():void{
@@ -36,6 +36,10 @@ export class AppComponent implements OnInit{
 
     goToCommande():void{
         this.router.navigate(['commande']);
+    }
+
+    showSearchBar(){
+        this.showSearch = true;
     }
 
     logOut():void{

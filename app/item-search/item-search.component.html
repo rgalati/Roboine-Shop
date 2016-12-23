@@ -1,8 +1,8 @@
 <div action="" class="navbar-form navbar-right" role="search">
     <div class="form-group">
-        <input #searchBox type="text" class="form-control" placeholder="Recherche" (keyup)="search(searchBox.value)">
+        <input #searchBox type="text" class="form-control" placeholder="Recherche" (keyup)="search(searchBox.value)" (focusout)="hideSearch()">
         <div *ngFor="let item of items | async" (click)="goToItem(item)" class="search-result" >
-            {{item.nom}}
+            <div>{{item.nom}}</div>
         </div>
     </div>
 </div>
